@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int main ()
+int main (void)
 {
-    cout << "Hello, world!" << endl;
+    cout << "Hello,";
+    cout << "world!\n";
     return 0;
 }

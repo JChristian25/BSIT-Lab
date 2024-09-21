@@ -1,9 +1,18 @@
 package Java;
 
-class Java 
+import java.awt.*;
+
+public class hello
 {
-    public static void main (String[] args)
+    public void drawRed(Graphics g, String displayString)
     {
-        System.out.println("Hello, World!");
-    }    
+        g.setColor(Color.red);
+        g.drawString(displayString, 100, 100);
+    }
+
+    public void drawBlue(Graphics g, String displayString)
+    {
+        g.setColor(Color.blue);
+        g.drawString(displayString, 100, 100);
+    }
 }

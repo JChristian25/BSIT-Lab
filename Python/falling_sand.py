@@ -1,6 +1,7 @@
 import time
 import random
 import sys
+import os
 
 ROWS = 10
 COLS = 40
@@ -30,6 +31,7 @@ def setSand():
         arr[rr][rc] = 1
 
 def render():
+    os.system('cls')
     sys.stdout.write("\033[H")  
     for row in arr:
         sys.stdout.write(''.join("X" if item == 1 else "/" for item in row) + "\n")
