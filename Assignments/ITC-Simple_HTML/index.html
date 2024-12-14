@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <title>Assignment - Simple HTML Webpage</title>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --background-light: #ecf0f1;
+
+        }
+
+        /* General reset */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-inline: 18%;
+            scroll-behavior: smooth;
+            background-color: var(--background-light);
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        .navigation {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            margin: 1rem auto;
+            max-width: 600px;
+            padding: 0.5rem;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color var(--transition-speed);
+            position: relative;
+        }
+
+        .navigation a:hover {
+            color: gold;
+        }
+
+        .navigation a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--secondary-color);
+            transition: all var(--transition-speed);
+        }
+
+        .navigation a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        p {
+            text-align: justify;
+            text-indent: 1em;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin-top: 4vh;
+            position: relative;
+            z-index: 10;
+            padding: 2vh 10vh;
+        }
+
+        section {
+            margin-block: 4vh;
+        }
+
+        section h2 {
+            text-align: center;
+        }
+
+        .row-three {
+            display: flex;
+            gap: 2vh;
+            justify-content: space-between;
+        }
+
+        .row-three .card {
+            background-color: #f4f4f9;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5em;
+            text-align: center;
+            flex: 1; 
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .row-three .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .row-three .card h3 {
+            margin-bottom: 1vh;
+        }
+
+        .row-three .card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            padding: 1.5vh 0;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        
+        #bio figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #bio hr {
+            max-width: 700px;
+        }
+        
+        #bio img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            transition: transform 0.3s ease; /* Smooth transition for transform */
+        }
+
+        #bio img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .skill-summary {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        summary:hover {
+            cursor: pointer;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .projects-table th, .projects-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .projects-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .projects-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-inline: 10%;
+            }
+
+            .row-three {
+                flex-direction: column;
+            }
+
+            #bio hr {
+                max-width: 700px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1>JOHN CHRISTIAN LINABAN</h1>
+            <h2>BSIT @ PUPQC</h2>
+            <nav class="navigation">
+                <a href="#bio">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h2>ABOUT ME</h2>
+            <p>This simple webpage is part of a web development assignment. It demonstrates the use of HTML and CSS to create a basic layout. Explore the sections below to learn more about the author, their hobbies, and social media links.</p>
+        </section>
+
+        <!-- Bio Section -->
+        <section id="bio">
+            <figure>
+                <img src="./picture.jpg" alt="Photo of John Christian Linaban">
+                <figcaption style="margin-top: 1vh;">My handsome foto</figcaption>
+            </figure>
+            <h2>Professional Short Bio</h2>
+            <p>
+                John Christian <em>"JC"</em> Linaban is a passionate and versatile freshman Bachelor of Science in Information Technology student at the <strong>Polytechnic University of the Philippines - Quezon City</strong>. With a love for continuous learning and a holistic approach to technology, JC strives to master multiple facets of the field, from web development, game development, machine learning to cybersecurity and data engineering.
+            </p>
+            <details>
+                <summary>Read More</summary>
+                <p>    
+                    Currently, he holds several leadership and technical roles, including <strong>Vice President at CBI-PUPQC, Team Lead for Front-End Web Development at PUPM-MSC, and Cybersecurity Cadet at PUPM-GDSC.</strong> He also contributes his skills as a <strong>Back-End Developer at COMMITS</strong> and as a <strong>Student Programmer (Full-Stack) at BALETECH</strong>.
+                </p>
+                <p>
+                    JC's diverse experience reflects his commitment to growth and adaptability, making him a well-rounded and forward-thinking technologist.</p>
+                </p> 
+            </details>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section id="hobbies">
+            <h2>My Hobbies</h2>
+            <p>In my free time, I enjoy a variety of activities that keep me creative and inspired. Some of my favorite hobbies include:</p>
+            <menu>
+                <li>🎨 Drawing and digital art</li>
+                <li>📚 Reading books (fiction and technology-related)</li>
+                <li>💻 Learning to code and creating new projects</li>
+            </menu>
+        </section>
+
+        <!-- Row-Three Section (3-Card Layout) -->
+        <section class="row-three">
+            <article class="card">
+                <h3>Web Development</h3>
+                <p>Learning front-end and back-end development, focusing on HTML, CSS, JavaScript, and modern frameworks.</p>
+            </article>
+
+            <article class="card">
+                <h3>Software Engineering</h3>
+                <p>Studying the principles of software design, clean code, and effective development practices.</p>
+            </article>
+
+            <article class="card">
+                <h3>Personal Projects</h3>
+                <p>Building fun and useful projects to practice skills in web design, API usage, and interactive features.</p>
+            </article>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>My Skills</h2>
+            
+            <!-- General Purpose Programming -->
+            <details>
+                <summary class="skill-summary">
+                    General Purpose Programming
+                </summary>
+                <ul>
+                    <li>
+                        <label for="python-skill">Python</label>
+                        <progress id="python-skill" value="80" max="100">85%</progress>
+                    </li>
+                    <li>
+                        <label for="java-skill">Java</label>
+                        <progress id="java-skill" value="40" max="100">75%</progress>
+                    </li>
+                    <li>
+                        <label for="c-skill">C/C++</label>
+                        <progress id="c-skill" value="70" max="100">60%</progress>
+                    </li>
+                </ul>
+            </details>
+            
+            <!-- Web Development -->
+            <details>
+                <summary class="skill-summary">
+                    Web Development
+                </summary>
+                
+                <ul>
+                    <li>
+                        <label for="html-skill">HTML</label>
+                        <progress id="html-skill" value="95" max="100">95%</progress>
+                    </li>
+                    <li>
+                        <label for="css-skill">CSS</label>
+                        <progress id="css-skill" value="90" max="100">90%</progress>
+                    </li>
+                    <li>
+                        <label for="javascript-skill">JavaScript</label>
+                        <progress id="javascript-skill" value="80" max="100">80%</progress>
+                    </li>
+                    <li>
+                        <label for="nodejs-skill">Laravel</label>
+                        <progress id="nodejs-skill" value="50" max="100">70%</progress>
+                    </li>
+                    <li>
+                        <label for="react-skill">React</label>
+                        <progress id="react-skill" value="65" max="100">65%</progress>
+                    </li>
+                </ul>
+            </details>
+            
+            <!-- Other Skills -->
+            <details>
+                <summary class="skill-summary">
+                    Other skills
+                </summary>
+                
+                <ul>
+                    <li>
+                        <label for="git-skill">Git & Version Control</label>
+                        <progress id="git-skill" value="60" max="100">90%</progress>
+                    </li>
+                    <li>
+                        <label for="sql-skill">SQL & Databases</label>
+                        <progress id="sql-skill" value="60" max="100">80%</progress>
+                    </li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects & Research</h2>
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Work</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>QRID-SAMS: Quick Response Code ID-based Student Attendance Monitoring System (Project)</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>The Relationship between Teachers’ Voice Quality and Attention of Grade 11 Students (Research)</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>Development of QRID-based Attendance as perceived by the Senior High School Students (Research)</td>
+                        <td>2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Socials Section -->
+        <address>
+            <p>Want to follow my journey or check out my work? Find me on social media platforms or send me a message directly!</p>
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/john.christian.linaban.2024/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/jclinaban/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/_jyziln/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </address>
+        
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; <time datetime="2024">2024</time> PUPQC BSIT - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
